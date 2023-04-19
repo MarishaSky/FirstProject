@@ -5,38 +5,37 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import runner.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 
+public class FirstTest extends BaseTest {
 
-public class FirstTest {
 
     @Test
-  public void testFirst() {
+    public void testFirst() {
 
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+        getDriver().get("https://www.selenium.dev/selenium/web/web-form.html");
 
-        String title = driver.getTitle();
+        String title = getDriver().getTitle();
         assertEquals("Web form", title);
 
-        WebElement textBox = driver.findElement(By.name("my-text"));
-        WebElement submitButton = driver.findElement(By.cssSelector("button"));
+        WebElement textBox = getDriver().findElement(By.name("my-text"));
+        WebElement submitButton = getDriver().findElement(By.cssSelector("button"));
 
         ((WebElement) textBox).sendKeys("Selenium");
         submitButton.click();
 
-        WebElement message = driver.findElement(By.id("message"));
+        WebElement message = getDriver().findElement(By.id("message"));
         String value = message.getText();
         Assert.assertEquals("Received!", value);
 
-        driver.quit();
+  //      driver.quit();
     }
-@Test
-    public void TestSecond() throws InterruptedException {
 
-//    ChromeOptions chromeOptions = new ChromeOptions();
-//    chromeOptions.addArguments("--remote-allow-origins=*", "--headless", "--window-size=1920,1080");
+
+    @Test
+    public void TestSecond() throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.selenium.dev/selenium/web/web-form.html");
@@ -56,6 +55,6 @@ public class FirstTest {
         String value = message.getText();
         Assert.assertEquals("Received!", value);
 
-        driver.quit();
+   //     driver.quit();
     }
 }
